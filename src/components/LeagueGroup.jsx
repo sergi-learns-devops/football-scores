@@ -10,7 +10,7 @@ const LeagueGroup = ({ league, matches }) => {
                 to={`/competition/${league.id}`}
                 className="flex items-center gap-3 mb-3 group cursor-pointer hover:opacity-80 transition"
             >
-                <img src={league.logo} alt={league.name} className="w-6 h-6 object-contain" />
+                <img src={league.logo} alt={league.name} className="w-6 h-6 md:w-8 md:h-8 object-contain" />
                 <h2 className="text-lg font-bold flex items-center gap-2">
                     {league.name}
                     <span className="text-xs font-normal text-muted bg-accent/50 px-2 py-0.5 rounded">

@@ -1,8 +1,9 @@
+
 import React from 'react';
-import { Tv } from 'lucide-react';
+import { Tv, Clock } from 'lucide-react';
 
 const MatchCard = ({ match }) => {
-    const { homeTeamData, awayTeamData, homeScore, awayScore, time, status, channel, minute } = match;
+    const { homeScore, awayScore, time, status, channel, minute } = match;
 
     const isLive = status === 'LIVE';
     const isFinished = status === 'FINISHED';
@@ -14,27 +15,22 @@ const MatchCard = ({ match }) => {
             <div className="flex-1 grid grid-cols-[1fr_auto_1fr] items-center gap-4">
                 {/* Home Team */}
                 <div className="flex items-center justify-end gap-3">
-                    <span className="font-medium text-right hidden sm:block">{homeTeamData.name}</span>
-                    <span className="font-medium text-right sm:hidden">{homeTeamData.name.substring(0, 3).toUpperCase()}</span>
-                    <img src={homeTeamData.logo} alt={homeTeamData.name} className="w-8 h-8 object-contain" />
+                    <span className="font-medium text-right hidden sm:block">{match.homeTeam.name}</span>
+                    <span className="font-medium text-right sm:hidden">{match.homeTeam.name.substring(0, 3).toUpperCase()}</span>
+                    <img src={match.homeTeam.logo} alt={match.homeTeam.name} className="w-6 h-6 md:w-8 md:h-8 object-contain" />
                 </div>
 
                 {/* Score / Time */}
                 <div className="flex flex-col items-center min-w-[80px]">
-                    {isScheduled ? (
-                        <span className="text-xl font-bold font-mono">{time}</span>
+                    {match.status === 'FINISHED' || match.status === 'LIVE' ? (
+                        <div className="text-2xl font-bold tracking-wider">
+                            {match.homeTeam.score} - {match.awayTeam.score}
+                        </div>
                     ) : (
-                        <div className="flex items-center gap-2">
-                            <span className={`text-2xl font-bold font-mono ${isLive ? 'text-red-500' : ''}`}>
-                                {homeScore}
-                            </span>
-                            <span className="text-muted">-</span>
-                            <span className={`text-2xl font-bold font-mono ${isLive ? 'text-red-500' : ''}`}>
-                                {awayScore}
-                            </span>
+                        <div className="text-xl font-bold text-muted">
+                            {match.time}
                         </div>
                     )}
-
                     {isLive && (
                         <span className="text-xs font-bold text-red-500 animate-pulse mt-1">
                             {minute}'
@@ -47,9 +43,9 @@ const MatchCard = ({ match }) => {
 
                 {/* Away Team */}
                 <div className="flex items-center justify-start gap-3">
-                    <img src={awayTeamData.logo} alt={awayTeamData.name} className="w-8 h-8 object-contain" />
-                    <span className="font-medium hidden sm:block">{awayTeamData.name}</span>
-                    <span className="font-medium sm:hidden">{awayTeamData.name.substring(0, 3).toUpperCase()}</span>
+                    <img src={match.awayTeam.logo} alt={match.awayTeam.name} className="w-6 h-6 md:w-8 md:h-8 object-contain" />
+                    <span className="font-medium hidden sm:block">{match.awayTeam.name}</span>
+                    <span className="font-medium sm:hidden">{match.awayTeam.name.substring(0, 3).toUpperCase()}</span>
                 </div>
             </div>
 

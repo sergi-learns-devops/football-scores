@@ -31,7 +31,7 @@ const CompetitionView = () => {
             </Link>
 
             <div className="flex items-center gap-4 mb-8">
-                <img src={league.logo} alt={league.name} className="w-16 h-16 object-contain bg-white/5 p-2 rounded-lg" />
+                <img src={league.logo} alt={league.name} className="w-10 h-10 md:w-16 md:h-16 object-contain bg-white/5 p-2 rounded-lg" />
                 <div>
                     <h1 className="text-3xl font-bold">{league.name}</h1>
                     <p className="text-muted">{league.country}</p>
@@ -72,8 +72,8 @@ const TabButton = ({ active, onClick, icon, label }) => (
     <button
         onClick={onClick}
         className={`flex items-center gap-2 px-4 py-3 border-b-2 transition whitespace-nowrap ${active
-                ? 'border-primary text-primary font-medium'
-                : 'border-transparent text-muted hover:text-foreground hover:border-border'
+            ? 'border-primary text-primary font-medium'
+            : 'border-transparent text-muted hover:text-foreground hover:border-border'
             }`}
     >
         {icon}
@@ -105,7 +105,7 @@ const StandingsTable = ({ standings }) => {
                         <tr key={row.teamId} className="border-b border-border last:border-0 hover:bg-accent/30 transition">
                             <td className="px-4 py-3 text-center font-medium">{row.position}</td>
                             <td className="px-4 py-3 flex items-center gap-3">
-                                <img src={row.team.logo} alt={row.team.name} className="w-6 h-6 object-contain" />
+                                <img src={row.team.logo} alt={row.team.name} className="w-6 h-6 md:w-8 md:h-8 object-contain" />
                                 <span className="font-medium">{row.team.name}</span>
                             </td>
                             <td className="px-4 py-3 text-center">{row.played}</td>

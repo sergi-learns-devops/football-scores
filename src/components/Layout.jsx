@@ -8,8 +8,8 @@ const Layout = ({ children }) => {
             <header className="bg-card border-b border-border sticky top-0 z-10 glass">
                 <div className="container flex items-center justify-between py-4">
                     <Link to="/" className="flex items-center gap-2 text-primary hover:text-blue-400 transition">
-                        <Trophy size={24} />
-                        <span className="text-lg font-bold">EuroScore Live</span>
+                        <Trophy className="w-6 h-6 md:w-8 md:h-8" />
+                        <span className="text-lg md:text-xl font-bold">EuroScore Live</span>
                     </Link>
                     <nav className="flex gap-4 text-sm font-medium">
                         <Link to="/" className="hover:text-primary transition">Matches</Link>
